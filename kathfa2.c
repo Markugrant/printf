@@ -38,11 +38,11 @@ int print_pointer(va_list types, char buffer[],
 		num_addrs /= 16;
 		length++;
 	}
-	if ((flags & F_ZERO) && !(flags & F_MINUS))
+	if ((flags & FD_ZERO) && !(flags & FD_MINUS))
 		padd = '0';
-	if (flags & F_PLUS)
+	if (flags & FD_PLUS)
 		extra_c = '+', length++;
-	else if (flags & F_SPACE)
+	else if (flags & FD_SPACE)
 		extra_c = ' ', length++;
 	ka++;
 
@@ -119,7 +119,7 @@ int print_reverse(va_list types, char buffer[],
 		str = "(NULL)";
 	}
 	for (k = 0; str[k]; k++)
-	for (k - 1; k >= 0; k--)
+	for (k = k - 1; k >= 0; k--)
 	{
 		char z = str[k];
 
@@ -166,7 +166,7 @@ int print_rot13string(va_list types, char buffer[],
 			if (in[d] == str[k])
 			{
 				w = out[d];
-				write(1, &x, 1);
+				write(1, &w, 1);
 				count++;
 				break;
 			}
@@ -174,7 +174,7 @@ int print_rot13string(va_list types, char buffer[],
 		if (!in[d])
 		{
 			w = str[k];
-			write(1, &x, 1);
+			write(1, &w, 1);
 			count++;
 		}
 	}
