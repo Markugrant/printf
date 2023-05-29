@@ -119,7 +119,7 @@ int print_reverse(va_list types, char buffer[],
 		str = "(NULL)";
 	}
 	for (k = 0; str[k]; k++)
-	for (k - 1; k >= 0; k--)
+	for (k = k - 1; k >= 0; k--)
 	{
 		char z = str[k];
 
@@ -166,7 +166,7 @@ int print_rot13string(va_list types, char buffer[],
 			if (in[d] == str[k])
 			{
 				w = out[d];
-				write(1, &x, 1);
+				write(1, &w, 1);
 				count++;
 				break;
 			}
@@ -174,7 +174,7 @@ int print_rot13string(va_list types, char buffer[],
 		if (!in[d])
 		{
 			w = str[k];
-			write(1, &x, 1);
+			write(1, &w, 1);
 			count++;
 		}
 	}

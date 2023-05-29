@@ -19,25 +19,25 @@ int _printf(const char *format, ...)
 
 	va_start(list, format);
 
-	for (x = 0; format && format[x] != '\0'; i++)
+	for (x = 0; format && format[x] != '\0'; x++)
 	{
-		if (format[i] != '%')
+		if (format[x] != '%')
 		{
-			buffer[buff_ind++] = format[i];
+			buffer[buff_ind++] = format[x];
 			if (buff_ind == BUFF_SIZE)
 				print_buffer(buffer, &buff_ind);
-			/* write(1, &format[i], 1);*/
+			/* write(1, &format[x], 1);*/
 			printed_chars++;
 		}
 		else
 		{
 			print_buffer(buffer, &buff_ind);
-			flags = get_flags(format, &i);
-			width = get_width(format, &i, list);
-			precision = get_precision(format, &i, list);
-			size = get_size(format, &i);
-			++i;
-			printed = handle_print(format, &i, list, buffer,
+			flags = get_flags(format, &x);
+			width = get_width(format, &x, list);
+			precision = get_precision(format, &x, list);
+			size = get_size(format, &x);
+			++x;
+			printed = handle_print(format, &x, list, buffer,
 				flags, width, precision, size);
 			if (printed == -1)
 				return (-1);
