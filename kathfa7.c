@@ -11,7 +11,7 @@
  * @sz: Size specifier
  * Return: 1 or 2;
  */
-int handle_print(const char *format, int *ind, va_list ls, char buff[],
+int handle_print(const char *fmt, int *ind, va_list ls, char buff[],
 	int flags, int width, int precision, int sz)
 {
 	int a, unknow_len = 0, printed_chars = -1;
